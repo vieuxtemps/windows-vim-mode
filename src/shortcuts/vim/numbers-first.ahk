@@ -1,15 +1,3 @@
-1::
-2::
-3::
-4::
-5::
-6::
-7::
-8::
-9::
-    numbersFirst(A_ThisHotkey)
-    Return
-
 numbersFirst(number) {
     Input, key, L1 ; todo: also read ctrl, shift etc
 
@@ -19,6 +7,9 @@ numbersFirst(number) {
 
         Input, key, L1
     }
+
+    if (number > 25)
+        number := 25
 
     while (number > 0) {
         Send, %key%
@@ -30,3 +21,14 @@ numbersFirst(number) {
     }
 }
 
+1::
+2::
+3::
+4::
+5::
+6::
+7::
+8::
+9::
+    numbersFirst(A_ThisHotkey)
+    Return
