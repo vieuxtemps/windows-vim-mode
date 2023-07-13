@@ -1,4 +1,5 @@
-w::
+$w::
+$+w::
     if (visualMode) {
         Send, +^{Right}
     } else {
@@ -7,7 +8,8 @@ w::
 
     Return
 
-b::
+$b::
+$+b::
     if (visualMode) {
         Send, +^{Left}
     } else {
@@ -16,23 +18,12 @@ b::
 
     Return
 
-+w::
-    Send, w
-    Return
-
-+b::
-    Send, b
-    Return
-
-e::
+$e::
+$+e::
     if (visualMode) {
-        Send, +^{Right}+{Left}
+        Send, +{Right}+^{Right}+{Left}
     } else {
-        Send, ^{Right}{Left}
+        Send, {Right}^{Right}{Left}
     }
 
-    Return
-
-+e::
-    Send, e
     Return
