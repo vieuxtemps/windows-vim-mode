@@ -1,5 +1,6 @@
 $w::
 $+w::
+    lastDir := "right"
     if (visualMode) {
         Send, +^{Right}
     } else {
@@ -10,6 +11,7 @@ $+w::
 
 $b::
 $+b::
+    lastDir := "left"
     if (visualMode) {
         Send, +^{Left}
     } else {
@@ -20,6 +22,7 @@ $+b::
 
 $e::
 $+e::
+    lastDir := "right"
     if (visualMode) {
         Send, +{Right}+^{Right}+{Left}
     } else {

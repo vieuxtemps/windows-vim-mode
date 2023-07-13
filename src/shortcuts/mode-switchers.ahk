@@ -6,7 +6,12 @@
 
 Esc::
     if (visualMode) 
-      Send, {Right} ; Deselect text and focus right
+    {
+        if (lastDir == "right")
+            Send, {Right} ; Deselect text and focus right
+        else
+            Send, {Left}
+    }
     switchToInsertMode()
     Return
 

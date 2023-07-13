@@ -17,6 +17,7 @@ k::
     Return
 
 h::
+    lastDir := "left"
     if (visualMode) {
         Send, +{Left}
     } else {
@@ -26,6 +27,7 @@ h::
     Return
 
 l::
+    lastDir := "right"
     if (visualMode) {
         Send, +{Right}
     } else {
