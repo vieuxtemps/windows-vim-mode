@@ -1,10 +1,12 @@
 >::
     visualOrMultipleKeyCommand(">", "{Tab}")
-    Send, {Left}
-    Return
+    Send, ^{Right}
+    switchToNormalMode()
+Return
 
 <::
     visualOrMultipleKeyCommand("<", "+{Tab}")
-    Send, {Left}
-    Return
+    Send, ^{Right}
+    switchToNormalMode()
+Return
 

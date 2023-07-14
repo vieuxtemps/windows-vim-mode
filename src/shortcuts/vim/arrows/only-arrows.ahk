@@ -1,20 +1,20 @@
 j::
+    lastDir := "right" ; direction guess
     if (visualMode) {
         Send, +{Down}
     } else {
         Send, {Down}
     }
-
-    Return
+Return
 
 k::
+    lastDir := "left" ; direction guess
     if (visualMode) {
         Send, +{Up}
     } else {
         Send, {Up}
     }
-
-    Return
+Return
 
 h::
     lastDir := "left"
@@ -23,8 +23,7 @@ h::
     } else {
         Send, {Left}
     }
-
-    Return
+Return
 
 l::
     lastDir := "right"
@@ -33,5 +32,4 @@ l::
     } else {
         Send, {Right}
     }
-
-    Return
+Return

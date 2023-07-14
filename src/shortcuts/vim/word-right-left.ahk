@@ -6,8 +6,7 @@ $+w::
     } else {
         Send, ^{Right}
     }
-
-    Return
+Return
 
 $b::
 $+b::
@@ -17,8 +16,7 @@ $+b::
     } else {
         Send, ^{Left}
     }
-
-    Return
+Return
 
 $e::
 $+e::
@@ -31,5 +29,4 @@ $+e::
     } else {
         Send, {Right}^{Right}{Left}
     }
-
-    Return
+Return

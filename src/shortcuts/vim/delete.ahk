@@ -1,15 +1,15 @@
 x::
     Send, {Delete}
     turnVisualModeOff()
-    Return
+Return
 
 $^x::
     Send, ^{Delete}
-    Return
+Return
 
 +x::
     Send, {BackSpace}
-    Return
+Return
 
 s::
     switchToInsertMode()
@@ -20,13 +20,12 @@ s::
     }
 
     turnVisualModeOff()
-
-    Return
+Return
 
 +s::
     switchToInsertMode()
     Send, {Home}+{End}^x
-    Return
+Return
 
 r::
     switchToInsertMode()
@@ -35,6 +34,4 @@ r::
     Send, {Delete}%key%{Left}
 
     switchToNormalMode()
-
-    Return
-
+Return

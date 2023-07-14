@@ -1,79 +1,83 @@
 +6::
+    lastDir := "left"
     if (visualMode) {
-        Send, +{Home}
+        Send, +{Home}^+{Right}
     } else {
-        Send, {Home}
+        Send, {Home}{Left}
+        Sleep, 10
+        Send, ^{Right}{Right}{Left}
     }
-
-    Return
+Return
 
 0::
+    lastDir := "left"
     if (visualMode) {
         Send, +{Home}
     } else {
         Send, {Home}
     }
-
-    Return
+Return
 
 +4::
+    lastDir := "right"
     if (visualMode) {
-        Send, +{End}
+        Sleep, 100
+        Send, +{End}+{Left}+{Right}
     } else {
-        Send, {End}
+        Send, {End}{Left}{Right}
     }
-
-    Return
+Return
 
 +0::
+    lastDir := "left"
     if (visualMode) {
         Send, +{Home}
     } else {
         Send, +{Home}
     }
-
-    Return
+Return
 
 ^0::
+    lastDir := "left"
     if (visualMode) {
         Send, +^{Home}
     } else {
         Send, ^{Home}
     }
-
-    Return
+Return
 
 +g::
+    lastDir := "right"
     if (visualMode) {
         Send, +^{End}
     } else {
         Send, ^{End}
     }
-
-    Return
+Return
 
 ^g::
+    lastDir := "left"
     if (visualMode) {
         Send, +^{Home}
     } else {
         Send, ^{Home}
     }
-
-    Return
+Return
 
 ^+0::
+    lastDir := "left"
     Send, ^+{Home}
-    Return
+Return
 
 :?*CZB0:gg::
+    lastDir := "left"
     if (visualMode) {
         Send, +^{Home}
     } else {
         Send, ^{Home}
     }
-
-    Return
+Return
 
 g::
-    Return
-
+    lastDir := "left"
+Return
