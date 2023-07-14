@@ -1,45 +1,51 @@
+; Enter normal mode
+; RAlt::
+; :?*:;;:: ; Enter normal node by double pressing ;; in insert mode (? = detect in the middle of string ; * = no need for enter or space)
 ^[::
 ^`;::
     Suspend Permit
     switchToNormalMode()
-    Return
+Return
 
+; Exit current mode (visual -> normal or normal -> insert)
 Esc::
-    if (visualMode) 
+    if (visualMode)
     {
         if (lastDir == "right")
             Send, {Right} ; Deselect text and focus right
-        else
+        else if (lastDir == "left")
             Send, {Left}
+        switchToNormalMode()
     }
-    switchToInsertMode()
-    Return
+    else
+        switchToInsertMode()
+Return
 
 i::
     switchToInsertMode()
-    Return
+Return
 
 +i::
     switchToInsertMode()
     Send, {Home}
-    Return
+Return
 
 a::
     switchToInsertMode()
     Send, {Right}
-    Return
+Return
 
 +a::
     switchToInsertMode()
     Send, {End}
-    Return
+Return
 
 v::
     turnVisualModeOn()
-    Return
+Return
 
 +v::
     turnVisualModeOn()
-    Send, {Home}{Home}+{Down}
-    Return
+    Send, {Home}+{Down}+{Left}
+Return
 
