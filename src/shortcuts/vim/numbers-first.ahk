@@ -21,35 +21,40 @@ numbersFirst(number) {
     while (key >= "0" and key <= "9") {
         number *= 10
         number += %key%
+        if (number > 25)
+            number := 25
+        repeatCommand := % number
+        ShowMessage(repeatCommand)
         Input, key, L1
     }
 
-    if (number > 25)
-        number := 25
-
-    repeatCommand := % number . key
+    repeatCommand := % repeatCommand . key
     ShowMessage(repeatCommand)
     Sleep, 200
 
-    nextMode := "normal"
+    nextMode := visualMode ? "visual" : "normal"
+
+    sleepTime := 10
 
     while (number > 0) {
         if (key == "w" or key == "W" or key == "e" or key == "E") {
-            Send, ^{Right}
+            Send, % visualMode ? "^+{Right}" : "^{Right}"
         } else if (key == "b" or key == "B") {
-            Send, ^{Left}
+            Send, % visualMode ? "^+{Left}" : "^{Left}"
         } else if (key == "h") {
-            Send, {Left}
+            Send, % visualMode ? "+{Left}":"{Left}"
         } else if (key == "j") {
-            Send, {Down}
+            Send, % visualMode ? "+{Down}" : "{Down}"
         } else if (key == "k") {
-            Send, {Up}
+            Send, % visualMode ? "+{Up}":"{Up}"
         } else if (key == "l") {
-            Send, {Right}
+            Send, % visualMode ? "+{Right}":"{Right}"
         } else if (key == "p") {
             Send, ^v
+            sleepTime := 20
         } else if (key == "P") {
             Send, {Home}{Enter}{Up}^v
+            sleepTime := 75
         } else if (key == "o") {
             Send, {End}{Enter}
             nextMode = "insert"
@@ -60,12 +65,14 @@ numbersFirst(number) {
             break
         }
 
-        Sleep, 10
+        Sleep, %sleepTime%
         number--
     }
 
     if (nextMode == "normal")
         switchToNormalMode()
-    else
+    else if (nextMode == "insert")
         switchToInsertMode()
+    else
+        turnVisualModeOn()
 }

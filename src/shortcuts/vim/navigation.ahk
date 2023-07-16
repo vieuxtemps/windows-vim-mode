@@ -1,7 +1,13 @@
 ^u::
-    Send, {PgUp}
+    if (visualMode)
+        Send, +{PgUp}
+    else
+        Send, {PgUp}
 Return
 
 ^d::
-    Send, {PgDn}
+    if (visualMode)
+        Send, +{PgDn}
+    else
+        Send, {PgDn}
 Return
