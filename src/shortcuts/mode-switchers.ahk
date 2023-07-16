@@ -3,6 +3,7 @@
 ; :?*:;;:: ; Enter normal node by double pressing ;; in insert mode (? = detect in the middle of string ; * = no need for enter or space)
 ^[::
 ^`;::
+#`;::
     Suspend Permit
     switchToNormalMode()
 Return
@@ -15,28 +16,33 @@ Esc::
             Send, {Right} ; Deselect text and focus right
         else if (lastDir == "left")
             Send, {Left}
+
+        lastDir := "none"
         switchToNormalMode()
     }
     else
         switchToInsertMode()
 Return
 
-i::
+i:: ; TODO: viw
     switchToInsertMode()
+    Send, {Left}
 Return
 
 +i::
     switchToInsertMode()
+    KeyWait, Shift, T1
     Send, {Home}
 Return
 
 a::
     switchToInsertMode()
-    Send, {Right}
+; Send, {Right}
 Return
 
 +a::
     switchToInsertMode()
+    KeyWait, Shift, T1
     Send, {End}
 Return
 
@@ -46,6 +52,7 @@ Return
 
 +v::
     turnVisualModeOn()
-    Send, {Home}+{Down}+{Left}
+    KeyWait, Shift, T1
+    Send, {Home}+{End}+{Right}
 Return
 
