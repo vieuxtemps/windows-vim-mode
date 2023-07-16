@@ -46,8 +46,10 @@ numbersFirst(number) {
             Send, {Up}
         } else if (key == "l") {
             Send, {Right}
-        } else if (key == "p" or key == "P") {
+        } else if (key == "p") {
             Send, ^v
+        } else if (key == "P") {
+            Send, {Home}{Enter}{Up}^v
         } else if (key == "o") {
             Send, {End}{Enter}
             nextMode = "insert"
