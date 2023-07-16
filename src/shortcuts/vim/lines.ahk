@@ -8,3 +8,7 @@ Return
     switchToInsertMode()
     Send, {Home}{Enter}{Up}
 Return
+
++j::
+    Send, {End}{Delete}
+Return
