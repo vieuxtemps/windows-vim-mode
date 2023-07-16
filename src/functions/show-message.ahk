@@ -6,22 +6,26 @@ if (TaskbarHeight = A_ScreenHeight) ; If taskbar is on the left instead of botto
     TaskbarHeight = 0
     xPos := TaskbarWidth
 }
+
 global yPos := A_ScreenHeight - TaskbarHeight - 52
 
+Gui, +LastFound +AlwaysOnTop -Caption +ToolWindow
+Gui, Color, 000000
+Gui, Font, s18 cWhite w700 q3, Verdana
+WinSet, ExStyle, +0x20 ; Make the GUI window click-through
+WinSet, Transparent, 215
+Gui, Add, Text, vMode Center w%A_ScreenWidth% h26, 0
+
 ShowMessage(message, color := "White", timer := false) {
-    SetTimer, DisableMessage, Delete
-    Gui, Destroy ; Replace GUI if it already exists
-    Gui, +LastFound +AlwaysOnTop -Caption +ToolWindow
-    Gui, Color, 000000
-    Gui, Font, s18 c%color% w700 q3, Verdana
-    Gui, Add, Text, Center w%A_ScreenWidth% h26, %message%
-    WinSet, ExStyle, +0x20 ; Make the GUI window click-through
-    WinSet, Transparent, 215
+    GuiControl,, Mode, %message%
+    Gui, Font, c%color%
+    GuiControl, Font, Mode
     Gui, Show, X%xPos% Y%yPos% NA
+    SetTimer, DisableMessage, Delete
     if (timer)
         SetTimer, DisableMessage, 1000
     return
     DisableMessage:
-        Gui, Destroy
+        Gui, Show, Hide
     return
 }
