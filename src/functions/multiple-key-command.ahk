@@ -39,7 +39,7 @@ multipleKeyCommand(shortcut, command) {
                 Return
             }
         } else if (key == "w" or key == "e") {
-            Send, ^+{Right}+{Left}
+            Send, ^+{Right}
             Send, %command%
             Return
         } else if (key == "b") {
