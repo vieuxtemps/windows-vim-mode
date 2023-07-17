@@ -31,8 +31,10 @@ Return
 r::
     switchToInsertMode()
 
+    ShowMessage("-- REPLACE --", "Yellow")
     Input, key, L1
-    Send, {Delete}%key%{Left}
+    if (Asc(key) >= 32) ; ignore Esc and Esc remaps
+        Send, {Delete}%key%{Left}
 
     switchToNormalMode()
 Return
