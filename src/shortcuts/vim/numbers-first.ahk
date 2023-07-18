@@ -28,12 +28,14 @@ numbersFirst(number) {
         Input, key, L1
     }
 
-    repeatCommand := % repeatCommand . key
-    ShowMessage(repeatCommand)
-    Sleep, 200
+    if (Asc(key) >= 32) ; ignore Esc and Esc remaps
+    {
+        repeatCommand := % repeatCommand . key
+        ShowMessage(repeatCommand)
+        Sleep, 200
+    }
 
     nextMode := visualMode ? "visual" : "normal"
-
     sleepTime := 10
 
     while (number > 0) {
