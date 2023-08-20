@@ -6,6 +6,10 @@
 
 Windows Vim Mode enables systemwide vim-like shortcuts on Windows. This is a fork of [vim-everywhere](https://github.com/lubokkanev/vim-everywhere), originally written by lubokkanev. It is written to be modular and as minimalistic as possible, and only emulate vim keypresses by sending Ctrl and Shift combinations. In contrast, other similar projects available for both Windows and macOS might do arguably invasive actions, such as reading clickable elements on the screen (for on-screen hinting) or copying text for token analysis to implement word movements, which goes against the philosophy of windows-vim-mode. All windows-vim-mode does is emulate vim commands by sending key combinations that are present in most Windows textboxes (such as Ctrl+&rarr; or Ctrl+Shift+&rarr;) when `Normal` or `Visual` modes are enabled.
 
+<p align="center">
+  <img src="demo.gif" />
+</p>
+
 # Notable changes from vim-everywhere
 - Timer-based On-screen Display (OSD) for the current mode, including for numbered/repeat commands (such as `5p` or `5w`).
 - Safer and more reliable code for sending keypresses, most notably fixed an issue where holding `w` to navigate between words could trigger a tab or window being closed by sending `Ctrl+W` by accident. Published versions of windows-vim-mode have been thoroughly tested and should behave exactly as expected without disrupting your workflow.
@@ -37,7 +41,7 @@ You can either download and execute the script directly with AutoHotkey v1 or do
 # Tips
 
 - I strongly suggest using `Shift+Capslock` to enter `Normal` mode. This will allow your hands to be properly positioning for high-likelihood proceeding commands (such as h/j/k/l/w/v/b). Pressing `Shift+Capslock` should not turn your Capslock light indicator on.
-- I strongly suggest using [Microsoft PowerToys](https://github.com/microsoft/PowerToys) to remap `Esc` to `Capslock` and `Capslock` to `Esc`, since this is the way vim was originally meant to be used. Note that you don't need to do this to use `Shift+Capslock` to enter `Normal` mode, and that AutoHotkey will ignore your PowerToys remap (i.e. the code will always consider `Capslock` to be your physical Capslock key).
+- I strongly suggest using [Microsoft PowerToys](https://github.com/microsoft/PowerToys) to remap `Esc` to `Capslock` and `Capslock` to `Esc`, since this is the way vim was originally meant to be used. Note that you don't need to do this to use `Shift+Capslock` to enter `Normal` mode, and that AutoHotkey will ignore your PowerToys remap (i.e. the code will always consider `Capslock` to be your physical Capslock key). Note: in the demo video above, `Capslock` is being displayed as `Capital`.
 
 # Commands
 
