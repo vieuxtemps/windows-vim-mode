@@ -11,3 +11,11 @@ Return
     else
         Send, {PgDn}
 Return
+
+m::
+    Send, {WheelDown}
+Return
+
+,::
+    Send, {WheelUp}
+Return

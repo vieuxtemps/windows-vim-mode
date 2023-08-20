@@ -61,9 +61,16 @@ Insert mode does nothing other than allowing you to enter `Normal` mode by press
 - Undo/redo: `u`, `<C-r>`
 - Indent: `<<`, `>>`
 - Line commands: `o`, `O`, `5o`, `5O`, `J`
-- Previous/next: `<C-n>` (&darr;), `<C-p>` (&uarr;). Not vanilla vim, useful for going back/forward in Windows Explorer: `<A-n>` (Alt+&rarr;), `<A-p>` (Alt+&larr;)
+- Previous/next: `<C-n>` (&darr;), `<C-p>` (&uarr;)
 - Reload windows-vim-mode: `<C-A-r>`
 - Exit windows-vim-mode: `<C-A-x>`
+
+## Normal mode - additional commands
+
+These commands are not considered vanilla vim, but are included by default and you might find them useful.
+
+- Go to previous/next (useful for going back/forward in Windows Explorer): `<A-n>` (Alt+&rarr;), `<A-p>` (Alt+&larr;)
+- Simulate mouse scrolling: `m` (scroll down), `,` (scroll up). This will follow your operating system's scrolling setting ('Scroll inactive windows when I hover over them').
 
 ## Visual mode
 
