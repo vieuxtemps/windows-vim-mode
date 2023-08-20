@@ -1,4 +1,5 @@
 #SingleInstance Force
+#MaxHotkeysPerInterval 300
 
 SetKeyDelay, -1
 #Include src\functions.ahk
