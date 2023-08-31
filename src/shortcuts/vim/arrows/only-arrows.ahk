@@ -1,4 +1,4 @@
-j::
+$j::
     lastDir := "right" ; direction guess
     if (visualMode) {
         Send, +{Down}
@@ -7,7 +7,7 @@ j::
     }
 Return
 
-k::
+$k::
     lastDir := "left" ; direction guess
     if (visualMode) {
         Send, +{Up}
@@ -16,7 +16,7 @@ k::
     }
 Return
 
-h::
+$h::
     lastDir := "left"
     if (visualMode) {
         Send, +{Left}
@@ -25,7 +25,7 @@ h::
     }
 Return
 
-l::
+$l::
     lastDir := "right"
     if (visualMode) {
         Send, +{Right}
