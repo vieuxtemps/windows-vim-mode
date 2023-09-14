@@ -7,14 +7,14 @@ if (TaskbarHeight = A_ScreenHeight) ; If taskbar is on the left instead of botto
     xPos := TaskbarWidth
 }
 
-global yPos := A_ScreenHeight - TaskbarHeight - 52
+global yPos := A_ScreenHeight - TaskbarHeight - 56
 
 Gui, +LastFound +AlwaysOnTop -Caption +ToolWindow
 Gui, Color, 000000
 Gui, Font, s18 cWhite w700 q3, Verdana
 WinSet, ExStyle, +0x20 ; Make the GUI window click-through
 WinSet, Transparent, 215
-Gui, Add, Text, vMode Center w%A_ScreenWidth% h26, 0
+Gui, Add, Text, vMode Center w%A_ScreenWidth% h30, 0
 
 ShowMessage(message, color := "White", timer := false) {
     GuiControl,, Mode, %message%
