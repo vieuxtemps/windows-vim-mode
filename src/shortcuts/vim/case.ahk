@@ -1,0 +1,1 @@
+~::SwapCase("toggle")
