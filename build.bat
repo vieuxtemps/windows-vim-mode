@@ -9,10 +9,10 @@ mkdir build
 set "AHK=C:\Program Files\AutoHotkey"
 set "BASE=AutoHotkeyU64.exe"
 
-cp "%AHK%\Compiler\Ahk2Exe.exe" .
-cp "%AHK%\%BASE%" .
+copy "%AHK%\Compiler\Ahk2Exe.exe" .
+copy "%AHK%\%BASE%" .
 
-Ahk2Exe.exe /icon "icons\transparent-white.ico" /in "windows-vim-mode.ahk" /out "build\windows-vim-mode.exe"
+Ahk2Exe.exe /icon "icons\transparent-white.ico" /in "windows-vim-mode.ahk" /out "build\windows-vim-mode.exe" /bin %BASE%
 
 if %errorlevel% equ 0 (
     echo Compilation successful.
@@ -29,8 +29,8 @@ xcopy /Q LICENSE build
 echo Copying README.md...
 xcopy /Q README.md build
 
-rm "Ahk2Exe.exe"
-rm "%BASE%"
+del "Ahk2Exe.exe"
+del "%BASE%"
 
 echo Zipping...
 echo:
