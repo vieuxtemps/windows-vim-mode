@@ -37,8 +37,10 @@ Return
 Return
 
 c::
-    visualOrMultipleKeyCommand("c", "^x")
-    switchToInsertMode()
+    if (visualOrMultipleKeyCommand("c", "^x") != "normal")
+        switchToInsertMode()
+    else
+        switchToNormalMode()
 Return
 
 +c::
