@@ -2,3 +2,4 @@
 #Include src\functions\multiple-key-command.ahk
 #Include src\functions\show-message.ahk
 #Include src\functions\swap-case.ahk
+#Include src\functions\action-to.ahk
