@@ -3,10 +3,11 @@ SwapCase(mode := "upper") {
 
   if (!visualMode) {
     Send, +{Right}
-    Sleep, 5
+    Sleep, 10
   }
+  Sleep, 10
   Send, ^c
-  ClipWait, 1
+  Sleep, 10
 
   newClipboard := ""
 
@@ -27,8 +28,9 @@ SwapCase(mode := "upper") {
   }
 
   Clipboard := newClipboard
+  Sleep, 10
   Send, ^v
-
+  Sleep, 40
   Clipboard := clipSaved
   clipSaved := ""
 

@@ -1,1 +1,1 @@
-~::SwapCase("toggle")
+$~::SwapCase("toggle")
