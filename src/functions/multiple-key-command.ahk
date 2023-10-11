@@ -29,21 +29,12 @@ multipleKeyCommand(shortcut, command) {
                 if (key2 == "w") { ; {c,d,y}{i,a}{w}
                     Send, ^{Left}
                     if (key == "a")
-                        Send {Left}+{Right}
+                        Send, {Left}+{Right}
                     Sleep, 10
                     Send, ^+{Right}
                     Sleep, 10
                     Send, %command%
                     Sleep, 10
-
-                    ; TODO: revise this (behavior and edges)
-                    ; if (key == "i")
-                    ;     Send, {Left}
-                    ; if (shortcut == "c" or shortcut == "d")
-                    ;     Send, {Space}
-                    ; else
-                    ;     Send, {Right}
-
                     Return
                 } else {
                     ShowMessage(chain, visualMode ? "0055C5": "Green")
