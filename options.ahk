@@ -20,6 +20,7 @@ ReadIni(section, key, defaultValue) {
 ReadIni("Options", "ENABLE_WINDOWS_EXPLORER_COMMANDS", 1)
 ReadIni("Options", "ENABLE_AUXILIARY_CLIPBOARD_COMMANDS", 1)
 ReadIni("Options", "ENABLE_ADDITIONAL_COMMANDS", 1)
+ReadIni("Options", "REPEAT_COMMANDS_LIMIT", 25)
 
 ; [OnScreenDisplay]
 ReadIni("OnScreenDisplay", "OSD_SMALL", 0)
