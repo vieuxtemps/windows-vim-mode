@@ -9,29 +9,24 @@
 
 ; Enter normal mode
 ^[:: ; Ctrl + [
-#If Options["CAPSLOCK_SWAPPED_WITH_ESC"]
-+Capslock:: ; Shift + Capslock
-#If
-Suspend Permit
-switchToNormalMode()
++Esc:: ; Shift + Capslock (if Capslock was remapped as Esc)
+    Suspend Permit
+    switchToNormalMode()
 Return
 
 ; Exit current mode (visual -> normal or normal -> insert)
 Esc::
-#If Options["CAPSLOCK_SWAPPED_WITH_ESC"]
-Capslock::
-#If
-if (visualMode) {
-    if (lastDir == "right")
-        Send, {Right} ; Deselect text and focus right
-    else if (lastDir == "left")
-        Send, {Left}
+    if (visualMode) {
+        if (lastDir == "right")
+            Send, {Right} ; Deselect text and focus right
+        else if (lastDir == "left")
+            Send, {Left}
 
-    lastDir := "none"
-    switchToNormalMode()
-}
-else
-    switchToInsertMode()
+        lastDir := "none"
+        switchToNormalMode()
+    }
+    else
+        switchToInsertMode()
 Return
 
 i::
