@@ -12,10 +12,12 @@ $^d::
         Send, {PgDn}
 Return
 
-$m::
-    Send, {WheelDown}
-Return
+#If Options["ENABLE_ADDITIONAL_COMMANDS"]
+    $m::
+        Send, {WheelDown}
+    Return
 
-$,::
-    Send, {WheelUp}
-Return
+    $,::
+        Send, {WheelUp}
+    Return
+#If

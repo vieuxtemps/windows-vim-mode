@@ -10,22 +10,23 @@ global lastDir := "none" ; Used when exiting visual mode with Esc
 
 switchToInsertMode()
 
+HotKey, % Options["RELOAD_SHORTCUT"], LabelReload
+HotKey, % Options["EXIT_SHORTCUT"], LabelExit
+
 #Include src\shortcuts.ahk
 
-; Press Ctrl + Alt + r in NORMAL mode to reload
-^!r::
+; Use for your own personal keybindings. Ignored if it doesn't exist, ignored by .gitignore
+#Include *i src\custom.ahk
+
+LabelReload:
+    Suspend, Permit
     ShowMessage("RELOADING...", "Yellow")
     Sleep, 500
     Reload
 Return
 
-; Press Ctrl + Alt + x in NORMAL mode to quit
-^!x::
+LabelExit:
+    Suspend, Permit
     ShowMessage("EXITING...", "Yellow")
     Sleep, 500
 ExitApp
-
-; Used for your own personal keybindings for NORMAL/VISUAL modes
-; Ignored if doesn't exist
-; Ignored by .gitignore
-#Include *i src\custom.ahk
