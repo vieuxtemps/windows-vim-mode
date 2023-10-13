@@ -4,7 +4,7 @@
   <img src="icons/transparent-white.ico" />
 </p>
 
-Windows Vim Mode enables systemwide vim-like shortcuts on Windows. This is a fork of [vim-everywhere](https://github.com/lubokkanev/vim-everywhere), originally written by lubokkanev. It is written to be modular and as minimalistic as possible, and only emulate vim keypresses by sending Ctrl and Shift combinations. In contrast, other similar projects available for both Windows and macOS might do arguably invasive actions, such as reading clickable elements on the screen (for on-screen hinting) or copying text for token analysis to implement word movements, which goes against the philosophy of windows-vim-mode. All windows-vim-mode does is emulate vim commands by sending key combinations that are present in most Windows textboxes (such as Ctrl+&rarr; or Ctrl+Shift+&rarr;) when `Normal` or `Visual` modes are enabled.
+Windows Vim Mode enables systemwide vim-like shortcuts on Windows. This is a fork of [vim-everywhere](https://github.com/lubokkanev/vim-everywhere), originally written by lubokkanev. It is written to be modular and as minimalistic as possible, and only emulate vim keypresses by sending Ctrl and Shift combinations. Some movement commands (such as `ct<char>`) are emulated by temporarily copying text from the current line, sending the appropriate movement keys and then restoring the clipboard to its original state.
 
 <p align="center">
   <img src="demo.gif" />
@@ -12,27 +12,30 @@ Windows Vim Mode enables systemwide vim-like shortcuts on Windows. This is a for
 
 # Notable changes from vim-everywhere
 - Timer-based On-screen Display (OSD) for the current mode, including for numbered/repeat commands (such as `5p` or `5w`).
-- Safer and more reliable code for sending keypresses, most notably fixed an issue where holding `w` to navigate between words could trigger a tab or window being closed by sending `Ctrl+W` by accident. Published versions of windows-vim-mode have been thoroughly tested and should behave exactly as expected without disrupting your workflow.
+- Safer and more reliable code for sending keypresses, most notably fixed an issue where holding `w` to navigate between words could trigger a tab or window being closed by sending `Ctrl+W` by accident.
 - Cleaned up and better organized codebase. Some unused and application-specific functions were removed and all hotkeys that remain were made to resemble vanilla vim.
 - Fixed tray icons (visual mode now has its own icon).
 - `Esc` can now be used to exit modes.
 - Better mode transitions when exiting modes (`Visual` &rarr; `Normal` &rarr; `Insert`). Transitioning from `Visual` to `Normal` instead of `Insert` seems to work better for real-world text selection scenarios.
+- Customizable options (see `options.ini`).
 - Many fixes for textboxes that are delay-sensitive.
 - Code for numbered/repeated commands (e.g. `5p`) and multiple key commands (e.g. `ciw`) was completely rewritten and made more readable.
-- Numbered/repeated commands are now limited to 25 to prevent catastrophic scenarios.
+- Numbered/repeated commands are now limited to 25 by default to prevent catastrophic scenarios.
 - Improved cursor positioning when leaving `Visual` mode.
-- Many fixed commands and also new commands, such as join lines (`J`) and replace (`r`).
+- Movement commands were added, such as `f<char>`, `T<char>`, `ct<char>`, `vf<char>`, etc.
+- Case swapping commands were added.
+- Many other fixed and new commands.
 
 # Installing
 
-You can either download and execute the script directly with AutoHotkey v1 or download and execute the pre-compiled binaries. This code was only tested with AutoHotkey v1.1.37.00 and will not run with AutoHotkey v2. Using earlier versions of AutoHotkey v1 might break some functionality. Only Windows 10 22H2 and Windows 11 22H2 were tested and confirmed to work, although it might work with earlier Windows versions.
+You can either download and execute the script directly with AutoHotkey v1 or download and execute the pre-compiled binaries. This code was only tested with AutoHotkey v1.1.37.01 and will not run with AutoHotkey v2. Using earlier versions of AutoHotkey v1 might break some functionality. Only Windows 10 22H2 and Windows 11 22H2 were tested and confirmed to work, although it might work with earlier Windows versions.
 
 ## As an AutoHotkey script
 - Download the source code.
-- Open **windows-vim-mode.ahk** with [AutoHotkey v1](https://github.com/AutoHotkey/AutoHotkey/releases). 
-- Press `Shift+Capslock` or `Ctrl+[` to go into `Normal` mode. 
-- Use vim-like shortcuts systemwide. 
-- Press `Esc`, `i` or `a` to return to `Insert` mode. 
+- Open **windows-vim-mode.ahk** with [AutoHotkey v1](https://github.com/AutoHotkey/AutoHotkey/releases).
+- Press `Ctrl+[` or `Shift+Esc` to switch to `Normal` mode. Using `Shift+Esc` with Capslock remapped as Esc is recommended.
+- Use vim-like shortcuts systemwide.
+- Press `Esc`, `i` or `a` to return to `Insert` mode, or `v` to enter `Visual` mode.
 
 ## Compiled version
 - Download and unzip the binaries.
@@ -40,8 +43,13 @@ You can either download and execute the script directly with AutoHotkey v1 or do
 
 # Tips
 
-- I strongly suggest using `Shift+Capslock` to enter `Normal` mode. This will allow your hands to be properly positioning for high-likelihood proceeding commands (such as h/j/k/l/w/v/b). Pressing `Shift+Capslock` should not turn your Capslock light indicator on.
-- I strongly suggest using [Microsoft PowerToys](https://github.com/microsoft/PowerToys) to remap `Esc` to `Capslock` and `Capslock` to `Esc`, since this is the way vim was originally meant to be used. Note that you don't need to do this to use `Shift+Capslock` to enter `Normal` mode, and that AutoHotkey will ignore your PowerToys remap (i.e. the code will always consider `Capslock` to be your physical Capslock key). Note: in the demo video above, `Capslock` is being displayed as `Capital`.
+- You can customize `options.ini` after the first boot. By default, you can restart and apply your options by pressing `Ctrl+Shift+Win+R`.
+- I strongly suggest using `Shift+Capslock` to enter `Normal` mode. This will allow your hands to be properly positioning for high-likelihood proceeding commands (such as h/j/k/l/w/v/b/f/t/c).
+- I strongly suggest using [AutoHotkey](https://github.com/AutoHotkey/AutoHotkey) or [Microsoft PowerToys](https://github.com/microsoft/PowerToys) to remap `Esc` to `Capslock` and `Capslock` to `Esc`, since this is the way vim was originally meant to be used. With AutoHotkey, this can be accomplished by running the following 2-line script:
+```
+Esc::Capslock
+Capslock::Esc
+```
 
 # Commands
 
@@ -49,12 +57,12 @@ Here is a partial list of available commands:
 
 ## Insert mode
 
-Insert mode does nothing other than allowing you to enter `Normal` mode by pressing `Shift+Capslock` or `Ctrl+[`.
+Insert mode does nothing other than allowing you to enter `Normal` mode by pressing `Ctrl+[` or `Shift+Esc`.
 
 ## Normal mode
 
 - Switch to Insert mode: `Esc`, `i`, `a`
-- Switch to Visual mode: `v`, `V`
+- Switch to Visual mode: `v`, `V` (select line)
 - Positioning: `0`, `$`, `h`, `j`, `k`, `l`, `4j`, `4k`, `gg`, `G`
 - Word navigation: `w`, `b`, `e`
 - Copy: `Y`, `y0`, `y$`
@@ -66,14 +74,21 @@ Insert mode does nothing other than allowing you to enter `Normal` mode by press
 - Indent: `<<`, `>>`
 - Line commands: `o`, `O`, `5o`, `5O`, `J`
 - Previous/next: `<C-n>` (&darr;), `<C-p>` (&uarr;)
-- Reload windows-vim-mode: `<C-A-r>`
-- Exit windows-vim-mode: `<C-A-x>`
+- Movement commands: `t<char>`, `f<char>`, `T<char>`, `F<char>`
+- Action/movement commands: `ct<char>`, `dt<char>`, `yt<char>`, `cf<char>`, `df<char>`, `yf<char>`, `cT<char>`, `dT<char>`, `yT<char>`, `cF<char>`, `dF<char>`, `yF<char>`
+- Case swapping commands: `~`
 
-## Normal mode - additional commands
+## Normal mode - Explorer commands
 
-These commands are not considered vanilla vim, but are included by default and you might find them useful.
+Additional Windows Explorer commands are enabled by default and can be disabled in `options.ini` (`ENABLE_WINDOWS_EXPLORER_COMMANDS`):
+- Go back in folder history: `p` 
+- Go forward in folder history: `n` 
+- Go one folder up: `Shift+p` 
 
-- Go to previous/next (useful for going back/forward in Windows Explorer): `<A-n>` (Alt+&rarr;), `<A-p>` (Alt+&larr;)
+## Normal mode - Additional commands
+
+These commands are not considered vanilla vim and can be disabled in `options.ini` (`ENABLE_ADDITIONAL_COMMANDS`), but are included by default since you might find them useful.
+
 - Simulate mouse scrolling: `m` (scroll down), `,` (scroll up). This will follow your operating system's scrolling setting ('Scroll inactive windows when I hover over them').
 
 ## Visual mode
@@ -85,30 +100,37 @@ Most of the normal mode commands will work in visual mode. You will most likely 
 - Positioning (with selection): `0`, `$`, `h`, `j`, `k`, `l`, `4j`, `4k`, `gg`, `G`
 - Word navigation: `w`, `b`, `e`
 - Copy: `y`
+- Selection/movement commands: `vt<char>`, `vf<char>`, `vT<char>`, `vF<char>`
+- Case swapping commands: `~`, `gu`, `gU`
 - Text addition/deletion: `s`, `x`, `d`
+
+## All modes
+
+- Reload windows-vim-mode: `Ctrl+Shift+Win+R`, customizable in `options.ini`.
+- Exit windows-vim-mode: `Ctrl+Shift+Win+X`, customizable in `options.ini`.
 
 # Similar and recommended tools
 
 ## Browser (Chromium/Firefox)
 
-- Vimium
+- [Vimium](https://github.com/philc/vimium)
 
 ## Visual Studio Code
 
-- VSCodeVim, vscode-neovim
+- [VSCodeVim](https://github.com/VSCodeVim/Vim), [vscode-neovim](https://github.com/vscode-neovim/vscode-neovim)
 
 ## Windows
 
-- vim-everywhere (the original)
-- mouseable
-- TextEditorAnywhere
+- [vim-everywhere (the original)](https://github.com/lubokkanev/vim-everywhere)
+- [mouseable](https://github.com/wirekang/mouseable)
+- [TextEditorAnywhere](https://www.listary.com/text-editor-anywhere)
 
 ## macOS
 
-- Karabiner-Elements
-- Hammerspoon / VimMode.spoon
+- [Karabiner-Elements](https://github.com/pqrs-org/Karabiner-Elements)
+- [Hammerspoon](https://github.com/Hammerspoon/hammerspoon) + [VimMode.spoon](https://github.com/dbalatero/VimMode.spoon)
 
 ## Linux/macOS
 
-- warpd
-- vim-anywhere (good-enough TextEditorAnywhere alternative, not to be confused with vim-everywhere)
+- [warpd](https://github.com/rvaiya/warpd)
+- [vim-anywhere](https://github.com/cknadler/vim-anywhere) (good-enough TextEditorAnywhere alternative, not to be confused with vim-everywhere)
