@@ -30,4 +30,5 @@ ReadIni("OnScreenDisplay", "OSD_OPACITY", 215)
 
 ; [Shortcuts]
 ReadIni("Shortcuts", "RELOAD_SHORTCUT", "^#+r")
+ReadIni("Shortcuts", "OPEN_OPTIONS_SHORTCUT", "^#+s")
 ReadIni("Shortcuts", "EXIT_SHORTCUT", "^#+x")

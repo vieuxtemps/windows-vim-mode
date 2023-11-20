@@ -11,6 +11,7 @@ global lastDir := "none" ; Used when exiting visual mode with Esc
 switchToInsertMode()
 
 HotKey, % Options["RELOAD_SHORTCUT"], LabelReload
+HotKey, % Options["OPEN_OPTIONS_SHORTCUT"], LabelOpenOptions
 HotKey, % Options["EXIT_SHORTCUT"], LabelExit
 
 #Include src\shortcuts.ahk
@@ -23,6 +24,11 @@ LabelReload:
     ShowMessage("RELOADING...", "Yellow")
     Sleep, 500
     Reload
+Return
+
+LabelOpenOptions:
+    Suspend, Permit
+    Run, options.ini
 Return
 
 LabelExit:

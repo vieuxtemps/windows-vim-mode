@@ -108,6 +108,7 @@ Most of the normal mode commands will work in visual mode. You will most likely 
 
 - Reload windows-vim-mode: `Ctrl+Shift+Win+R`, customizable in `options.ini`.
 - Exit windows-vim-mode: `Ctrl+Shift+Win+X`, customizable in `options.ini`.
+- Open `options.ini` with your default text editor: `Ctrl+Shift+Win+S`, customizable in `options.ini`.
 
 # Similar and recommended tools
 
