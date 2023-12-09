@@ -1,6 +1,9 @@
 y::
-    visualOrMultipleKeyCommand("y", "^c")
-    Send, {Left}
+    result := visualOrMultipleKeyCommand("y", "^c")
+
+    if (result != "cancel")
+        Send, {Left}
+
     switchToNormalMode()
 Return
 
