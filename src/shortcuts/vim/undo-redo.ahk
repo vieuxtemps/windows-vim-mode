@@ -13,5 +13,8 @@ Return
 Return
 
 ^r::
-    Send, ^+z
+    if (ExplorerActive() and not A_CaretX)
+        Send, ^y
+    else
+        Send, ^+z
 Return
