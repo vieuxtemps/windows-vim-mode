@@ -103,8 +103,6 @@ visualOrMultipleKeyCommand(shortcut, command) {
         ; TODO: rewrite without nextMode
         nextMode := multipleKeyCommand(shortcut, command)
         return nextMode
-        ; if (nextMode == "normal")
-        ;     return "normal"
     }
 
     Return
