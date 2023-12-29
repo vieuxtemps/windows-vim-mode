@@ -26,20 +26,22 @@ Windows Vim Mode enables systemwide vim-like shortcuts on Windows. This is a for
 - Case swapping commands were added.
 - Many other fixed and new commands.
 
-# Installing
+# Installation and usage
 
-You can either download and execute the script directly with AutoHotkey v1 or download and execute the pre-compiled binaries. This code was only tested with AutoHotkey v1.1.37.01 and will not run with AutoHotkey v2. Using earlier versions of AutoHotkey v1 might break some functionality. Only Windows 10 22H2 and Windows 11 22H2 were tested and confirmed to work, although it might work with earlier Windows versions.
+You can either download and execute the script directly with [AutoHotkey v1](https://github.com/AutoHotkey/AutoHotkey/releases/tag/v1.1.37.01), or download and execute the pre-compiled binaries. This code was only tested with AutoHotkey v1.1.37.01, and will not run with AutoHotkey v2. Using earlier versions of AutoHotkey v1 might break some functionality. Only Windows 10 22H2 and Windows 11 22H2 were tested and confirmed to work, although it might work with earlier Windows versions.
 
-## As an AutoHotkey script
+## As a script
 - Download the source code.
-- Open **windows-vim-mode.ahk** with [AutoHotkey v1](https://github.com/AutoHotkey/AutoHotkey/releases).
-- Press `Ctrl+[` or `Shift+Esc` to switch to `Normal` mode. Using `Shift+Esc` with Capslock remapped as Esc is recommended.
-- Use vim-like shortcuts systemwide.
-- Press `Esc`, `i` or `a` to return to `Insert` mode, or `v` to enter `Visual` mode.
+- Open **windows-vim-mode.ahk** with [AutoHotkey v1](https://github.com/AutoHotkey/AutoHotkey/releases/tag/v1.1.37.01).
 
 ## Compiled version
 - Download and unzip the binaries.
 - Open **windows-vim-mode.exe**.
+
+## Usage
+- Press `Ctrl+[` or `Shift+Esc` to switch to `Normal` mode. Using `Shift+Esc` with Capslock remapped as Esc is recommended.
+- Use vim-like shortcuts systemwide.
+- Press `Esc`, `i` or `a` to return to `Insert` mode, or `v` to enter `Visual` mode.
 
 # Tips
 
@@ -67,7 +69,7 @@ Insert mode does nothing other than allowing you to enter `Normal` mode by press
 - Word navigation: `w`, `b`, `e`
 - Copy: `Y`, `y0`, `y$`
 - Paste: `p`, `P`
-- Text addition/deletion: `A`, `I`, `C`, `c0`, `c$`, `dd`, `D`, `d0`, `d$`, `x`, `cb`, `cw`, `ce`, `dw`, `diw`, `ciw`, `daw`, `caw`, `<C-w>`, `r`, `s`, `S`
+- Text addition/deletion: `A`, `I`, `C`, `c0`, `c$`, `dd`, `D`, `d0`, `d$`, `x`, `X`, `cb`, `cw`, `ce`, `dw`, `diw`, `ciw`, `daw`, `caw`, `r`, `s`, `S`, `<C-w>`
 - Repeat commands: `8w`, `5e`, `2b`, `3p`, `3P`
 - Scrolling: `<C-u>`, `<C-d>`
 - Undo/redo: `u`, `<C-r>`
@@ -81,9 +83,12 @@ Insert mode does nothing other than allowing you to enter `Normal` mode by press
 ## Normal mode - Explorer commands
 
 Additional Windows Explorer commands are enabled by default and can be disabled in `options.ini` (`ENABLE_WINDOWS_EXPLORER_COMMANDS`):
-- Go back in folder history: `p` 
-- Go forward in folder history: `n` 
-- Go one folder up: `Shift+p` 
+- Go back in folder history: `p`
+- Go forward in folder history: `n`
+- Go one folder up: `Shift+p`
+- Cut: `x` (when not editing text)
+
+When the Explorer module is enabled, delete/copy/paste commands are disabled within Explorer (when not editing text) as a safety precaution.
 
 ## Normal mode - Additional commands
 
