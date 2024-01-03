@@ -115,6 +115,10 @@ Most of the normal mode commands will work in visual mode. You will most likely 
 - Exit windows-vim-mode: `Ctrl+Shift+Win+X`, customizable in `options.ini`.
 - Open `options.ini` with your default text editor: `Ctrl+Shift+Win+S`, customizable in `options.ini`.
 
+# Running automatically at startup
+
+If you wish this application to run automatically at startup, press `Windows+R` to open the Run window, type `shell:startup` to open your current user's startup folder and create a shortcut for windows-vim-mode.ahk or windows-vim-mode.exe there. Note: if you are using this application to interact with other applications running with elevated/administrator privileges, this application must run with administrator privileges as well, otherwise inputs will be ignored when such applications are focused.
+
 # Similar and recommended tools
 
 ## Browser (Chromium/Firefox)
