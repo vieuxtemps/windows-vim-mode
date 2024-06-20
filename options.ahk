@@ -1,7 +1,7 @@
 ; Options
 
 global IniFile := "options.ini"
-global Options := []
+global Options := {}
 
 if (!FileExist(IniFile)) {
   FileCopy, % A_WorkingDir "\data\defaultOptions.ini", % A_WorkingDir "\" IniFile
