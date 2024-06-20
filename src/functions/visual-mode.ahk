@@ -3,6 +3,7 @@ turnVisualModeOff() {
 }
 
 turnVisualModeOn() {
+    ShowMessage("Visual", "Blue")
     visualMode := true
 }
 
