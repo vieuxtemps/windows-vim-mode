@@ -1,12 +1,5 @@
-; Enter normal mode
-; :?*:;;:: ; Enter normal node by double pressing ;; in insert mode (? = detect in the middle of string ; * = no need for enter or space)
-^[:: ; Ctrl + [
-<+Capslock:: ; Left Shift + Capslock
-    Suspend Permit
-    switchToNormalMode()
-Return
-
-; Hold Right Alt to use windows-vim-mode. Disabled by default.
+; Hold Right Alt to use windows-vim-mode.
+; Disabled by default.
 ;$*RAlt::
 ;    Suspend Permit
 ;    switchToNormalMode()
@@ -14,10 +7,17 @@ Return
 ;    switchToInsertMode()
 ;Return
 
+; Enter normal mode
+^[:: ; Ctrl + [
++Capslock:: ; Shift + Capslock
++Esc:: ; Shift + Esc
+    Suspend Permit
+    switchToNormalMode()
+Return
+
 ; Exit current mode (visual -> normal or normal -> insert)
 Esc::
-    if (visualMode)
-    {
+    if (visualMode) {
         if (lastDir == "right")
             Send, {Right} ; Deselect text and focus right
         else if (lastDir == "left")
@@ -30,9 +30,8 @@ Esc::
         switchToInsertMode()
 Return
 
-i:: ; TODO: viw
+i::
     switchToInsertMode()
-; Send, {Left}
 Return
 
 +i::
@@ -43,12 +42,12 @@ Return
 
 a::
     switchToInsertMode()
-; Send, {Right}
+    Send, {Right}
 Return
 
 +a::
     switchToInsertMode()
-    KeyWait, Shift, T1
+    ; KeyWait, Shift, T1
     Send, {End}
 Return
 
@@ -61,4 +60,3 @@ Return
     KeyWait, Shift, T1
     Send, {Home}+{End}+{Right}
 Return
-
