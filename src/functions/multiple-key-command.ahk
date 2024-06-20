@@ -1,75 +1,70 @@
 multipleKeyCommand(shortcut, command) {
-    simpleDown := "simple-down"
-    simpleUp := "simple-up"
-    number := 1
+    Suspend On
 
-    Input, key, L1
+    chain := % "(" . command . ") " . shortcut
+    ShowMessage(chain, "Lime")
 
-    if (key == "i") {
-       Input, key, L1
+    Input, key, L1 T3
+    chain := % chain . key
+    ShowMessage(chain, "Lime")
 
-       if (key == "w") {
-           Send, ^{Left}+^{Right}
-       }
-    }
+    if (shortcut == "c" or shortcut == "d" or shortcut == "y") {
+        if (key == "i" or key == "a") {
+            Input, key2, L1 T3
+            if (ErrorLevel == "Timeout") ; Timeout or error
+            {
+                switchToInsertMode()
+                Return
+            }
+            else
+            {
+                chain := % chain . key2
+                ShowMessage(chain, "Green")
+            }
 
-    number := 0
-
-    while (key >= "0" and key <= "9") {
-        number *= 10
-        number += %key%
-
-        Input, key, L1 ; todo: also check for ctrl, shift etc
-    }
-
-    if (number == 0) {
-        number := 1
-    }
-
-    while (number > 0) {
-        number--
-
-        if (key == "j") {
-            Send, {Home}+{Down}+{Down}
-            key := simpleDown
-            number--
-        } else if (key == "k") {
-            Send, {Home}{Down}+{Up}+{Up}
-            key := simpleUp
-            number--
-        } else if (key == "h") {
-            Send, +{Left}
-        } else if (key == "l") {
-            Send, +{Right}
-        } else if (key == shortcut) {
-            Send, {Home}{Home}+{End}+{Right}
-            key := simpleDown
-        } else if (key == "w") {
-            Send, +^{Right}
-        } else if (key == "b") {
-            Send, +^{Left}
-        } else if (key == "$") {
-            Send, +{End}
-            key := simpleDown
-        } else if (key == "^" or key == "0") {
-            Send, +{Home}
-            number := 0
-        } else if (key == "g") {
-            Send, {End}+^{Home}
-            number := 0
-        } else if (key == "G") {
-            Send, {Home}{Home}+^{End}
-            number := 0
-        } else if (key == "i" or key == "a") {
-            Send, %key%
+            if (key2 == "w") {
+                Send, ^{Left}
+                if (key == "a")
+                    Send {Left}+{Right}
+                Sleep, 10
+                Send, ^+{Right}
+                Sleep, 10
+                if (key == "i")
+                    Send, +{Left}
+                Sleep, 10
+                Send, %command%
+                Return
+            } else {
+                ShowMessage(chain, "Green")
+                Return
+            }
+        } else if (key == "w" or key == "e") {
+            Send, ^+{Right}+{Left}
+            Send, %command%
             Return
-        } else if (key == simpleDown) {
-            Send, +{Down}
-        } else if (key == simpleUp) {
-            Send, +{Up}
-        } else {
+        } else if (key == "b") {
+            Send, ^+{Left}
+            Send, %command%
             Return
         }
+    }
+
+    ;; yy dd cc << >>
+    if (shortcut == key) {
+        if (shortcut == "y" or shortcut == "d" or shortcut == "c")
+            Send, {Home}{Home}+{End}+{Right}
+        else
+            Send, {Home}
+    } else if (key == "$") {
+        Send, +{End}
+    } else if (key == "^" or key == "0") {
+        Send, +{Home}
+    } else if (key == "g") {
+        Send, ^+{Home}
+    } else if (key == "G") {
+        Send, ^+{End}
+    } else {
+        Return
     }
 
     Send, %command%
