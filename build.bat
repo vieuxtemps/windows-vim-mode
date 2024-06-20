@@ -44,6 +44,7 @@ set "OUTPUT=windows-vim-mode-v%VERSION%.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tzip -mx0 %OUTPUT% ".\%INPUT%\*"
 
 echo:
+echo Hashes (%OUTPUT%):
 for /f %%a in ('powershell -command "(certutil -hashfile %OUTPUT% MD5)[1]"') do set "MD5=%%a"
 echo MD5: %MD5%
 for /f %%a in ('powershell -command "(certutil -hashfile %OUTPUT% SHA1)[1]"') do set "SHA1=%%a"
