@@ -21,8 +21,8 @@ numbersFirst(number) {
     while (key >= "0" and key <= "9") {
         number *= 10
         number += %key%
-        if (number > 25)
-            number := 25
+        if (number > Options["REPEAT_COMMANDS_LIMIT"])
+            number := Options["REPEAT_COMMANDS_LIMIT"]
         repeatCommand := % number
         ShowMessage(repeatCommand)
         Input, key, L1
