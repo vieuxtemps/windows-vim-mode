@@ -6,7 +6,6 @@
 #Include %A_ScriptDir%\src\shortcuts\vim\word-right-left.ahk
 #Include %A_ScriptDir%\src\shortcuts\vim\arrows.ahk
 #Include %A_ScriptDir%\src\shortcuts\vim\navigation.ahk
-#Include %A_ScriptDir%\src\shortcuts\vim\search.ahk
 #Include %A_ScriptDir%\src\shortcuts\vim\numbers-first.ahk
 #Include %A_ScriptDir%\src\shortcuts\vim\indent.ahk
 
