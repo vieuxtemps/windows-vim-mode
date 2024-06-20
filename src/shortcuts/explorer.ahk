@@ -10,12 +10,23 @@
 ; n: go forward in history
 #If Options["ENABLE_WINDOWS_EXPLORER_COMMANDS"] and (WinActive("ahk_exe explorer.exe") or WinActive("ahk_class #32770"))
   p::
-    turnVisualModeOff()
-    Send, !{Left}
+    if (A_CaretX) { ; If editing text (e.g. renaming file)
+      Send, ^v
+    }
+    else {
+      turnVisualModeOff()
+      Send, !{Left}
+    }
   Return
 
   +p::
-    Send, !{Up}
+    if (A_CaretX) {
+      Send, {Left}
+      Send, ^v
+    }
+    else {
+      Send, !{Up}
+    }
   Return
 
   n::
