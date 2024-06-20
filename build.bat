@@ -12,7 +12,7 @@ set "BASE=AutoHotkeyU64.exe"
 copy "%AHK%\Compiler\Ahk2Exe.exe" .
 copy "%AHK%\%BASE%" .
 
-Ahk2Exe.exe /icon "icons\transparent-white.ico" /in "windows-vim-mode.ahk" /out "build\windows-vim-mode.exe" /bin %BASE%
+Ahk2Exe.exe /bin %BASE% /icon "icons\transparent-white.ico" /in "windows-vim-mode.ahk" /out "build\windows-vim-mode.exe"
 
 if %errorlevel% equ 0 (
     echo Compilation successful.
@@ -39,7 +39,9 @@ echo:
 set /p "VERSION=Enter release version number: "
 set "INPUT=build"
 set "OUTPUT=windows-vim-mode-v%VERSION%.zip"
-powershell -command "Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::CreateFromDirectory('%INPUT%', '%OUTPUT%')"
+@REM powershell -command "Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::CreateFromDirectory('%INPUT%', '%OUTPUT%')"
+@REM powershell -Command "$compress = @{ Path = '%INPUT%'; CompressionLevel = 'NoCompression'; DestinationPath = '%OUTPUT%' }; Compress-Archive @compress"
+"C:\Program Files\7-Zip\7z.exe" a -tzip -mx0 %OUTPUT% ".\%INPUT%\*"
 
 echo:
 for /f %%a in ('powershell -command "(certutil -hashfile %OUTPUT% MD5)[1]"') do set "MD5=%%a"
