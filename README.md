@@ -10,49 +10,6 @@ Windows Vim Mode enables systemwide vim-like shortcuts on Windows. This is a for
   <img src="demo.gif" />
 </p>
 
-# Notable changes from vim-everywhere
-- Timer-based On-screen Display (OSD) for the current mode, including for numbered/repeat commands (such as `5p` or `5w`).
-- Safer and more reliable code for sending keypresses, most notably fixed an issue where holding `w` to navigate between words could trigger a tab or window being closed by sending `Ctrl+W` by accident.
-- Cleaned up and better organized codebase. Some unused and application-specific functions were removed and all hotkeys that remain were made to resemble vanilla vim.
-- Fixed tray icons (visual mode now has its own icon).
-- `Esc` can now be used to exit modes.
-- Better mode transitions when exiting modes (`Visual` &rarr; `Normal` &rarr; `Insert`). Transitioning from `Visual` to `Normal` instead of `Insert` seems to work better for real-world text selection scenarios.
-- Customizable options (see `options.ini`).
-- Many fixes for textboxes that are delay-sensitive.
-- Code for numbered/repeated commands (e.g. `5p`) and multiple key commands (e.g. `ciw`) was completely rewritten and made more readable.
-- Numbered/repeated commands are now limited to 25 by default to prevent catastrophic scenarios.
-- Improved cursor positioning when leaving `Visual` mode.
-- Movement commands were added, such as `f<char>`, `T<char>`, `ct<char>`, `vf<char>`, etc.
-- Case swapping commands were added.
-- Many other fixed and new commands.
-
-# Installation and usage
-
-You can either download and execute the script directly with [AutoHotkey v1](https://github.com/AutoHotkey/AutoHotkey/releases/tag/v1.1.37.01), or download and execute the pre-compiled binaries. This code was only tested with AutoHotkey v1.1.37.01, and will not run with AutoHotkey v2. Using earlier versions of AutoHotkey v1 might break some functionality. Only Windows 10 22H2 and Windows 11 22H2 were tested and confirmed to work, although it might work with earlier Windows versions.
-
-## As a script
-- Download the source code.
-- Open **windows-vim-mode.ahk** with [AutoHotkey v1](https://github.com/AutoHotkey/AutoHotkey/releases/tag/v1.1.37.01).
-
-## Compiled version
-- Download and unzip the binaries.
-- Open **windows-vim-mode.exe**.
-
-## Usage
-- Press `Ctrl+[` or `Shift+Esc` to switch to `Normal` mode. Using `Shift+Esc` with Capslock remapped as Esc is recommended.
-- Use vim-like shortcuts systemwide.
-- Press `Esc`, `i` or `a` to return to `Insert` mode, or `v` to enter `Visual` mode.
-
-# Tips
-
-- You can customize `options.ini` after the first boot. By default, you can restart and apply your options by pressing `Ctrl+Shift+Win+R`.
-- I strongly suggest using `Shift+Capslock` to enter `Normal` mode. This will allow your hands to be properly positioning for high-likelihood proceeding commands (such as h/j/k/l/w/v/b/f/t/c).
-- I strongly suggest using [AutoHotkey](https://github.com/AutoHotkey/AutoHotkey) or [Microsoft PowerToys](https://github.com/microsoft/PowerToys) to remap `Esc` to `Capslock` and `Capslock` to `Esc`, since this is the way vim was originally meant to be used. With AutoHotkey, this can be accomplished by running the following 2-line script:
-```
-Esc::Capslock
-Capslock::Esc
-```
-
 # Commands
 
 Here is a partial list of available commands:
@@ -88,7 +45,7 @@ Additional Windows Explorer commands are enabled by default and can be disabled 
 - Go one folder up: `Shift+p`
 - Cut: `x` (when not editing text)
 
-When the Explorer module is enabled, delete/copy/paste commands are disabled within Explorer (when not editing text) as a safety precaution.
+Safety note: when the Explorer module is enabled (which is the default), delete/copy/paste commands are disabled within Explorer (when not editing text) as a safety precaution.
 
 ## Normal mode - Additional commands
 
@@ -115,9 +72,52 @@ Most of the normal mode commands will work in visual mode. You will most likely 
 - Exit windows-vim-mode: `Ctrl+Shift+Win+X`, customizable in `options.ini`.
 - Open `options.ini` with your default text editor: `Ctrl+Shift+Win+S`, customizable in `options.ini`.
 
+# Installation and usage
+
+You can either download and execute the script directly with [AutoHotkey v1](https://github.com/AutoHotkey/AutoHotkey/releases/tag/v1.1.37.01), or download and execute the pre-compiled binaries. This code was only tested with AutoHotkey v1.1.37.01, and will not run with AutoHotkey v2. Using earlier versions of AutoHotkey v1 might break some functionality. Only Windows 10 22H2 and Windows 11 22H2 were tested and confirmed to work, although it might work with earlier Windows versions.
+
+## As a script
+- Download the source code.
+- Open **windows-vim-mode.ahk** with [AutoHotkey v1](https://github.com/AutoHotkey/AutoHotkey/releases/tag/v1.1.37.01).
+
+## Compiled version
+- Download and unzip the binaries.
+- Open **windows-vim-mode.exe**.
+
+## Usage
+- Press `Ctrl+[` or `Shift+Esc` to switch to `Normal` mode. Using `Shift+Esc` with Capslock remapped as Esc is recommended.
+- Use vim-like shortcuts systemwide.
+- Press `Esc`, `i` or `a` to return to `Insert` mode, or `v` to enter `Visual` mode.
+
+# Tips
+
+- You can customize `options.ini` after the first boot. By default, you can restart and apply your options by pressing `Ctrl+Shift+Win+R`.
+- I strongly suggest using `Shift+Capslock` to enter `Normal` mode. This will allow your hands to be properly positioning for high-likelihood proceeding commands (such as h/j/k/l/w/v/b/f/t/c).
+- I strongly suggest using [AutoHotkey](https://github.com/AutoHotkey/AutoHotkey) or [Microsoft PowerToys](https://github.com/microsoft/PowerToys) to remap `Esc` to `Capslock` and `Capslock` to `Esc`, since this is the way vim was [originally meant to be used](https://vim.fandom.com/wiki/Avoid_the_escape_key). With AutoHotkey, this can be accomplished by running the following 2-line script (as a separate script/process):
+```
+Esc::Capslock
+Capslock::Esc
+```
+
 # Running automatically at startup
 
 If you wish this application to run automatically at startup, press `Windows+R` to open the Run window, type `shell:startup` to open your current user's startup folder and create a shortcut for windows-vim-mode.ahk or windows-vim-mode.exe there. Note: if you are using this application to interact with other applications running with elevated/administrator privileges, this application must run with administrator privileges as well, otherwise inputs will be ignored when such applications are focused.
+
+# Notable changes from vim-everywhere
+- Timer-based On-screen Display (OSD) for the current mode, including for numbered/repeat commands (such as `5p` or `5w`).
+- Safer and more reliable code for sending keypresses, most notably fixed an issue where holding `w` to navigate between words could trigger a tab or window being closed by sending `Ctrl+W` by accident.
+- Cleaned up and better organized codebase. Some unused and application-specific functions were removed and all hotkeys that remain were made to resemble vanilla vim.
+- Fixed tray icons (visual mode now has its own icon).
+- `Esc` can now be used to exit modes.
+- Better mode transitions when exiting modes (`Visual` &rarr; `Normal` &rarr; `Insert`). Transitioning from `Visual` to `Normal` instead of `Insert` seems to work better for real-world text selection scenarios.
+- Customizable options (see `options.ini`).
+- Many fixes for textboxes that are delay-sensitive.
+- Code for numbered/repeated commands (e.g. `5p`) and multiple key commands (e.g. `ciw`) was completely rewritten and made more readable.
+- Numbered/repeated commands are now limited to 25 by default to prevent catastrophic scenarios.
+- Improved cursor positioning when leaving `Visual` mode.
+- Movement commands were added, such as `f<char>`, `T<char>`, `ct<char>`, `vf<char>`, etc.
+- Case swapping commands were added.
+- Many other fixed/new commands.
 
 # Similar and recommended tools
 
