@@ -99,9 +99,11 @@ Esc::Capslock
 Capslock::Esc
 ```
 
-# Running automatically at startup
+# Permissions, security and running automatically at startup
 
-If you wish this application to run automatically at startup, press `Windows+R` to open the Run window, type `shell:startup` to open your current user's startup folder and create a shortcut for windows-vim-mode.ahk or windows-vim-mode.exe there. Note: if you are using this application to interact with other applications running with elevated/administrator privileges, this application must run with administrator privileges as well, otherwise inputs will be ignored when such applications are focused.
+Some applications running with elevated privileges (such Task Manager, Windows Settings and other system tools) will completely ignore external input from an application being run with normal privileges. Run this application as administrator if you wish to send input to such applications.
+
+If you wish this application to run automatically at startup (with or without elevated privileges), or if you are concerned about security (false positives), see the [shared project documentation](https://github.com/vieuxtemps/ahk-shared-docs).
 
 # Notable changes from vim-everywhere
 - Timer-based On-screen Display (OSD) for the current mode, including for numbered/repeat commands (such as `5p` or `5w`).
