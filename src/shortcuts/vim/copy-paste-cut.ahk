@@ -15,6 +15,11 @@ y::
 
     Return
 
++y::
+    Send, {Home}+{End}^c{Left}{Right}
+
+    Return
+
 d::
     visualOrMultipleKeyCommand("d", "^x")
 
