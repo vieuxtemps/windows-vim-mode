@@ -16,7 +16,23 @@ Return
 Return
 
 d::
-    visualOrMultipleKeyCommand("d", "^x")
+    if (visualMode)
+        Send, ^x
+    else
+        visualOrMultipleKeyCommand("d", "^x")
+
+    switchToNormalMode()
+Return
+
++d::
+    if (visualMode)
+        Send, {Home}
+
+    Send, +{End}^x
+
+    if (visualMode)
+        Send, {Backspace}
+
     switchToNormalMode()
 Return
 
@@ -30,7 +46,3 @@ Return
     switchToInsertMode()
 Return
 
-+d::
-    Send, +{End}^x
-    switchToNormalMode()
-Return
