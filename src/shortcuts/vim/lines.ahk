@@ -1,7 +1,8 @@
 o::
     if (!visualMode) {
         switchToInsertMode()
-        Send, {End}{Enter}
+        Send, {End}
+        Send, +{Enter}
     }
 Return
 
@@ -9,7 +10,9 @@ Return
     if (!visualMode) {
         KeyWait, Shift, T1
         switchToInsertMode()
-        Send, {Home}{Enter}{Up}
+        Send, {Home}
+        Send, +{Enter}
+        Send, {Up}
     }
 Return
 
