@@ -61,6 +61,8 @@ numbersFirst(number) {
         } else if (key == "O") {
             Send, {Home}{Enter}{Up}
             nextMode = "insert"
+        } else if (key == "J") {
+            Send, {End}{Delete}
         } else {
             break
         }

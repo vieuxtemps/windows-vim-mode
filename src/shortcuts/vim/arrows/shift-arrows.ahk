@@ -1,15 +1,15 @@
 +h::
     Send, +{Left}
-    Return
+Return
 
 +l::
     Send, +{Right}
-    Return
+Return
 
-+j::
-    Send, +{Down}
-    Return
+; +j::
+;     Send, +{Down}
+;     Return
 
 +k::
     Send, +{Up}
-    Return
+Return
