@@ -12,7 +12,7 @@ x::
             Send, {Delete}
     }
 
-    turnVisualModeOff()
+    switchToNormalMode()
 Return
 
 $+x::
