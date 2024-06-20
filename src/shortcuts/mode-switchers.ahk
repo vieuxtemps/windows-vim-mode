@@ -1,6 +1,13 @@
 ^[::
+^`;::
     Suspend Permit
     switchToNormalMode()
+    Return
+
+Esc::
+    if (visualMode) 
+      Send, {Right} ; Deselect text and focus right
+    switchToInsertMode()
     Return
 
 i::
