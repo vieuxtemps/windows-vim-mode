@@ -20,7 +20,9 @@ ShowMessage(message, color := "White", timer := false) {
     GuiControl,, Mode, %message%
     Gui, Font, c%color%
     GuiControl, Font, Mode
-    Gui, Show, X%xPos% Y%yPos% NA
+    try {
+        Gui, Show, X%xPos% Y%yPos% NA
+    }
     SetTimer, DisableMessage, Delete
     if (timer)
         SetTimer, DisableMessage, 1000
