@@ -1,3 +1,3 @@
-#Include shortcuts\mode-switchers.ahk
-#Include shortcuts\vim.ahk
+#Include src\shortcuts\mode-switchers.ahk
+#Include src\shortcuts\vim.ahk
 
