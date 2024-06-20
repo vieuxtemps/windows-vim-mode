@@ -6,25 +6,24 @@
 ; n: go forward in history
 ;
 #If ExplorerActive()
-  p::
-    if (A_CaretX) { ; If editing text (e.g. renaming file)
-      Send, ^v
+  *p::
+    if (GetKeyState("LShift", "P")) {
+      if (A_CaretX) {
+        Send, {Left}
+        Send, ^v
+      } else {
+        Send, {Blind}{vkFF}{LShift up}
+        Send, !{Up}
+      }
+    } else {
+      if (A_CaretX) { ; If editing text (e.g. renaming file)
+        Send, ^v
+      } else {
+        turnVisualModeOff()
+        Send, !{Left}
+      }
     }
-    else {
-      turnVisualModeOff()
-      Send, !{Left}
-    }
-  Return
-
-  +p::
-    if (A_CaretX) {
-      Send, {Left}
-      Send, ^v
-    }
-    else {
-      Send, !{Up}
-    }
-  Return
+  return
 
   n::
     turnVisualModeOff()

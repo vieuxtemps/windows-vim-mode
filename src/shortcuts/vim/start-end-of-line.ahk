@@ -51,7 +51,8 @@ Return
     if (visualMode) {
         Send, +^{End}
     } else {
-        If ExplorerActive()
+        WinGetTitle, title, A
+        If ExplorerActive() and title != ""
             Send, {End}
         Else
             Send, ^{End}
@@ -77,7 +78,8 @@ Return
     if (visualMode) {
         Send, +^{Home}
     } else {
-        If ExplorerActive()
+        WinGetTitle, title, A
+        If ExplorerActive() and title != ""
             Send, {Home}
         Else
             Send, ^{Home}
