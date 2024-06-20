@@ -1,12 +1,3 @@
-p::
-    Send, ^v
-    turnVisualModeOff()
-Return
-
-+p::
-    Send, {Left}p
-Return
-
 y::
     visualOrMultipleKeyCommand("y", "^c")
     Send, {Left}
