@@ -57,14 +57,18 @@ numbersFirst(number) {
         } else if (key == "P") {
             Send, {Home}{Enter}{Up}^v
             sleepTime := 75
-        } else if (key == "o") {
-            Send, {End}{Enter}
-            nextMode = "insert"
-        } else if (key == "O") {
-            Send, {Home}{Enter}{Up}
-            nextMode = "insert"
-        } else if (key == "J") {
-            Send, {End}{Delete}
+        } else if (!visualMode) {
+            if (key == "o") {
+                Send, {End}{Enter}
+                nextMode = "insert"
+            } else if (key == "O") {
+                Send, {Home}{Enter}{Up}
+                nextMode = "insert"
+            } else if (key == "J") {
+                Send, {End}{Delete}
+            } else {
+                break
+            }
         } else {
             break
         }

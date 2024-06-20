@@ -1,14 +1,19 @@
 o::
-    switchToInsertMode()
-    Send, {End}{Enter}
+    if (!visualMode) {
+        switchToInsertMode()
+        Send, {End}{Enter}
+    }
 Return
 
 +o::
-    KeyWait, Shift, T1
-    switchToInsertMode()
-    Send, {Home}{Enter}{Up}
+    if (!visualMode) {
+        KeyWait, Shift, T1
+        switchToInsertMode()
+        Send, {Home}{Enter}{Up}
+    }
 Return
 
 +j::
-    Send, {End}{Delete}
+    if (!visualMode)
+        Send, {End}{Delete}
 Return
