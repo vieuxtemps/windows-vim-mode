@@ -14,6 +14,7 @@ SetKeyDelay, -1
 
 global visualMode := false
 global lastDir := "none" ; Used when exiting visual mode with Esc
+global LAT := {}
 
 switchToInsertMode()
 

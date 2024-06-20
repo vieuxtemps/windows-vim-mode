@@ -9,6 +9,8 @@ actionTo(char, command := false, restoreClipboard := true, includingLast := fals
     if (restoreClipboard and not Options["ENABLE_AUXILIARY_CLIPBOARD_COMMANDS"])
         return
 
+    StoreLAT(char, command, restoreClipboard, includingLast, backwards)
+
     KeyWait, Shift
 
     if (restoreClipboard)
@@ -35,19 +37,25 @@ actionTo(char, command := false, restoreClipboard := true, includingLast := fals
     ; InStr is performing backwards (RTL) search (negative offset) for 'backwards'
     POS := InStr(Clipboard, char, 1, backwards ? 0 : 1)
 
+    ; 't' command right next to char (should find the next/2nd occurrence)
+    if (POS == 1 and includingLast == 0)
+        POS := InStr(Clipboard, char, 1, backwards ? 0 : 1, 2)
+
+    ; Same, but backwards 'f'
+    if (POS == len)
+        POS := InStr(Clipboard, char, 1, backwards ? 0 : 1, 2)
+
     if (backwards)
         remaining := LEN - POS + 1
     else
         remaining := POS
 
-    if (backwards)
-    {
+    if (backwards) {
         if (remaining = 0 or POS = 0) {
             ActionRestoreClipboard()
             return 0
         }
-    } else
-    {
+    } else {
         if (remaining = 0 or remaining > 150) {
             ActionRestoreClipboard()
             return 0
@@ -63,7 +71,7 @@ actionTo(char, command := false, restoreClipboard := true, includingLast := fals
             Send, {Left}
         else
             Send, {Right}
-        ; Sleep, 1
+        Sleep, 10
     }
     Send, {Shift up}
 
@@ -76,6 +84,8 @@ actionTo(char, command := false, restoreClipboard := true, includingLast := fals
 }
 
 actionToVisual(char, command := false, restoreClipboard := true, includingLast := false, backwards := false) {
+    StoreLAT(char, command, restoreClipboard, includingLast, backwards)
+
     KeyWait, Shift
 
     if (restoreClipboard)
@@ -91,8 +101,7 @@ actionToVisual(char, command := false, restoreClipboard := true, includingLast :
         prefixClip := Clipboard
         Send, {Right}
         Send, +{Home}
-    }
-    else {
+    } else {
         Send, +{Right}
         Sleep, 5
         Send, ^c
@@ -124,9 +133,12 @@ actionToVisual(char, command := false, restoreClipboard := true, includingLast :
             ActionRestoreClipboard()
             return 0
         }
-    }
-    else {
+    } else {
         remaining := InStr(Clipboard, char, 1, StrLen(prefixClip) + 1)
+
+        ; 't' command right next to char (should find the next/2nd occurrence)
+        if (POS == 1 and includingLast == 0)
+            POS := InStr(Clipboard, char, 1, backwards ? 0 : 1, 2)
 
         if (remaining = 0 or remaining > 150) {
             ActionRestoreClipboard()
@@ -143,7 +155,7 @@ actionToVisual(char, command := false, restoreClipboard := true, includingLast :
             Send, {Left}
         else
             Send, {Right}
-        ; Sleep, 1
+        Sleep, 10
     }
     Send, {Shift up}
 
