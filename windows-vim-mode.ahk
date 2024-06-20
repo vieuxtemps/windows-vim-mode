@@ -1,6 +1,11 @@
 #SingleInstance Force
 #MaxHotkeysPerInterval 300
+Menu, Tray, Tip, Windows Vim Mode
 SetKeyDelay, -1
+
+;@Ahk2Exe-Obey U_Version, FileRead U_Version`, version
+;@Ahk2Exe-SetFileVersion %U_Version%
+;@Ahk2Exe-SetProductVersion Build v%U_Version% AutoHotkey v%A_AhkVersion%
 
 #Include options.ahk
 #Include src\groups.ahk
