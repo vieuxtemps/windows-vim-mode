@@ -24,7 +24,10 @@ $e::
 $+e::
     lastDir := "right"
     if (visualMode) {
-        Send, +{Right}+^{Right}+{Left}
+        Send, +{Right}
+        Sleep, 10
+        Send, +^{Right}
+        Send, +{Left}
     } else {
         Send, {Right}^{Right}{Left}
     }
