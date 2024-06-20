@@ -35,7 +35,10 @@ r::
 
     ShowMessage("-- REPLACE --", "Yellow")
     Input, key, L1
-    if (Asc(key) >= 32) ; ignore Esc and Esc remaps
+
+    if (key = "`n") ; Special case for Enter (split lines)
+        Send, {Delete}{Enter}
+    else if (Asc(key) >= 32) ; ignore Esc and Esc remaps
         Send, {Delete}%key%{Left}
 
     switchToNormalMode()
