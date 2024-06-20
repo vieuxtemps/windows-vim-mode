@@ -1,9 +1,10 @@
 o::
     switchToInsertMode()
     Send, {End}{Enter}
-    Return
+Return
 
 +o::
+    KeyWait, Shift, T1
     switchToInsertMode()
     Send, {Home}{Enter}{Up}
-    Return
+Return

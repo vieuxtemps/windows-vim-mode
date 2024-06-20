@@ -1,11 +1,11 @@
 u::
     Send, ^z
-    Return
+Return
 
 ^r::
     Send, ^+z
-    Return
+Return
 
 +u::
     Send, ^z
-    Return
+Return

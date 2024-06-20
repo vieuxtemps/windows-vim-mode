@@ -4,6 +4,7 @@ p::
 Return
 
 +p::
+    KeyWait, Shift, T1
     Send, {Left}p
 Return
 
@@ -16,12 +17,10 @@ Return
 +y::
     Send, {Home}
     Sleep, 10
-    Send, +{End}
-    Sleep, 10
-    Send, +{Right}
+    Send, +{End}+{Right}
     Sleep, 10
     Send, ^c
-    Sleep, 200
+    Sleep, 150
     Send, {Left}
     switchToNormalMode()
 Return
