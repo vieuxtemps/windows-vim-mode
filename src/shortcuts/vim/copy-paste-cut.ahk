@@ -4,7 +4,6 @@ p::
 Return
 
 +p::
-    KeyWait, Shift, T1
     Send, {Left}p
 Return
 
