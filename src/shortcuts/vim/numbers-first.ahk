@@ -65,6 +65,8 @@ numbersFirst(number) {
                 Send, {Home}{Enter}{Up}
                 nextMode = "insert"
             } else if (key == "J") {
+                if (ExplorerActive())
+                    break
                 Send, {End}{Delete}
             } else {
                 break
