@@ -13,10 +13,10 @@ multipleKeyCommand(shortcut, command) {
     if (shortcut == "c" or shortcut == "d" or shortcut == "y") {
         if (key == "i" or key == "a" or key = "t" or key = "f") {
             Input, key2, L1 T3
-            if (ErrorLevel == "Timeout") ; Timeout or error
+            if (key2 == Chr(27) or ErrorLevel == "Timeout") ; Esc, timeout or error
             {
                 switchToInsertMode()
-                Return
+                Return "cancel"
             }
             else
             {
@@ -102,8 +102,9 @@ visualOrMultipleKeyCommand(shortcut, command) {
     } else {
         ; TODO: rewrite without nextMode
         nextMode := multipleKeyCommand(shortcut, command)
-        if (nextMode == "normal")
-            return "normal"
+        return nextMode
+        ; if (nextMode == "normal")
+        ;     return "normal"
     }
 
     Return
