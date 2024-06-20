@@ -29,10 +29,14 @@ multipleKeyCommand(shortcut, command) {
                 Sleep, 10
                 Send, ^+{Right}
                 Sleep, 10
-                if (key == "i")
-                    Send, +{Left}
-                Sleep, 10
                 Send, %command%
+                Sleep, 10
+                if (key == "i")
+                    Send, {Left}
+                if (shortcut == "c" or shortcut == "d")
+                    Send, {Space}
+                else
+                    Send, {Right}
                 Return
             } else {
                 ShowMessage(chain, "Green")
