@@ -3,6 +3,7 @@
 SetKeyDelay, -1
 
 #Include options.ahk
+#Include src\groups.ahk
 #Include src\functions.ahk
 
 global visualMode := false
