@@ -51,7 +51,7 @@ Safety note: when the Explorer module is enabled (which is the default), delete/
 
 These commands are not considered vanilla vim and can be disabled in `options.ini` (`ENABLE_ADDITIONAL_COMMANDS`), but are included by default since you might find them useful.
 
-- Simulate mouse scrolling: `m` (scroll down), `,` (scroll up). This will follow your operating system's scrolling setting ('Scroll inactive windows when I hover over them').
+- Simulate mouse scrolling: `m` (scroll down), `,` (scroll up).
 
 ## Visual mode
 

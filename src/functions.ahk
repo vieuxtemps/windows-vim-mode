@@ -4,3 +4,4 @@
 #Include src\functions\swap-case.ahk
 #Include src\functions\action-to.ahk
 #Include src\functions\last-action-to.ahk
+#Include src\functions\additional-commands.ahk
