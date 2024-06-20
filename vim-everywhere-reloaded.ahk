@@ -12,14 +12,14 @@ switchToInsertMode()
 
 ; Press Ctrl + Alt + r in NORMAL mode to reload
 ^!r::
-    ShowMessage("Reloading...", "Green")
+    ShowMessage("RELOADING...", "Yellow")
     Sleep, 500
     Reload
 Return
 
 ; Press Ctrl + Alt + x in NORMAL mode to quit
 ^!x::
-    ShowMessage("Exiting...")
+    ShowMessage("EXITING...", "Yellow")
     Sleep, 500
 ExitApp
 
