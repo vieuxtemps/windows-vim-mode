@@ -24,7 +24,11 @@ Return
 
 +s::
     switchToInsertMode()
-    Send, {Home}+{End}^x
+    Send, {Home}{Right}{Left}
+    Sleep, 10
+    Send, +{End}
+    Sleep, 30
+    Send, ^x
 Return
 
 r::
