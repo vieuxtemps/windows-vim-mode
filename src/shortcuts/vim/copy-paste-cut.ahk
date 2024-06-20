@@ -1,43 +1,51 @@
 p::
     Send, ^v
     turnVisualModeOff()
-
-    Return
+Return
 
 +p::
-    Send, p
-
-    Return
+    Send, {Left}p
+Return
 
 y::
     visualOrMultipleKeyCommand("y", "^c")
     Send, {Left}
-
-    Return
+    switchToNormalMode()
+Return
 
 +y::
-    Send, {Home}+{End}^c{Left}{Right}
-
-    Return
+    Send, {Home}
+    Sleep, 10
+    Send, +{End}
+    Sleep, 10
+    Send, +{Right}
+    Sleep, 10
+    Send, ^c
+    Sleep, 200
+    Send, {Left}
+    switchToNormalMode()
+Return
 
 d::
     visualOrMultipleKeyCommand("d", "^x")
-
-    Return
+    switchToNormalMode()
+Return
 
 c::
     visualOrMultipleKeyCommand("c", "^x")
     switchToInsertMode()
-
-    Return
+Return
 
 +c::
-    Send, +d
+    Send, +{End}^x
     switchToInsertMode()
-
-    Return
+Return
 
 +d::
     Send, +{End}^x
+    switchToNormalMode()
+Return
 
-    Return
+$^w::
+    Send, ^{BackSpace}
+Return
