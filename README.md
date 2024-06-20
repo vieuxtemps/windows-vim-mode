@@ -121,6 +121,9 @@ If you wish this application to run automatically at startup (with or without el
 - Case swapping commands were added.
 - Many other fixed/new commands.
 
+# Interoperability with neo-mousekeys
+If you use [neo-mousekeys](https://github.com/vieuxtemps/neo-mousekeys), you can quickly switch between windows-vim-mode's Normal mode and the Enabled mode from neo-mousekeys by setting `INTEROPERABILITY=1` in `options.ini`. You might need to change `ACTIVATION=^e` to your neo-mousekeys activation sequence in case you are not using the default.
+
 # Similar and recommended tools
 
 ## Browser (Chromium/Firefox)
@@ -133,8 +136,9 @@ If you wish this application to run automatically at startup (with or without el
 
 ## Windows
 
-- [vim-everywhere (the original)](https://github.com/lubokkanev/vim-everywhere)
-- [mouseable](https://github.com/wirekang/mouseable)
+- [vim-everywhere](https://github.com/lubokkanev/vim-everywhere) (the original)
+- [neo-mousekeys](https://github.com/vieuxtemps/neo-mousekeys) (fast cursor movement with your keyboard, with windows-vim-mode interoperability included)
+- [mouseable](https://github.com/wirekang/mouseable) (inspiration for neo-mousekeys)
 - [TextEditorAnywhere](https://www.listary.com/text-editor-anywhere)
 
 ## macOS

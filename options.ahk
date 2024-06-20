@@ -32,3 +32,13 @@ ReadIni("OnScreenDisplay", "OSD_OPACITY", 215)
 ReadIni("Shortcuts", "RELOAD_SHORTCUT", "^#+r")
 ReadIni("Shortcuts", "OPEN_OPTIONS_SHORTCUT", "^#+s")
 ReadIni("Shortcuts", "EXIT_SHORTCUT", "^#+x")
+
+; [NeoMouseKeys]
+ReadIni("NeoMouseKeys", "INTEROPERABILITY", 0)
+ReadIni("NeoMouseKeys", "ACTIVATION", "^e")
+
+if (Options["INTEROPERABILITY"]) {
+  activation := Options["ACTIVATION"]
+  fn := Func("EnableNeoMousekeys").Bind(activation)
+  HotKey, % "$" activation, % fn
+}

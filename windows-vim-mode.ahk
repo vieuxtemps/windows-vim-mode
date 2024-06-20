@@ -25,6 +25,13 @@ HotKey, % Options["EXIT_SHORTCUT"], LabelExit
 ; Use for your own personal keybindings. Ignored if it doesn't exist, ignored by .gitignore
 #Include *i src\custom.ahk
 
+EnableNeoMousekeys(activation) {
+    switchToInsertMode()
+    SendLevel 1
+    Send, % activation
+    SendLevel 0
+}
+
 LabelReload:
     Suspend, Permit
     ShowMessage("RELOADING...", "Yellow")
