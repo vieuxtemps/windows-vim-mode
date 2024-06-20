@@ -35,3 +35,7 @@ r::
 
     switchToNormalMode()
 Return
+
+$^w::
+    Send, ^{BackSpace}
+Return

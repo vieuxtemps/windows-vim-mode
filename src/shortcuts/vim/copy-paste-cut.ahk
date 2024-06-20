@@ -45,7 +45,3 @@ Return
     Send, +{End}^x
     switchToNormalMode()
 Return
-
-$^w::
-    Send, ^{BackSpace}
-Return
