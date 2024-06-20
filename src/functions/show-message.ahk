@@ -38,7 +38,7 @@ ShowMessage(message, color := "White", timer := false) {
     }
     SetTimer, DisableMessage, Delete
     if (timer)
-        SetTimer, DisableMessage, 1000
+        SetTimer, DisableMessage, -1000
     return
     DisableMessage:
         Gui, Show, Hide
