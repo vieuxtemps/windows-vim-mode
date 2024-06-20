@@ -1,4 +1,7 @@
 SwapCase(mode := "upper") {
+  if (not Options["ENABLE_AUXILIARY_CLIPBOARD_COMMANDS"])
+    return
+
   clipSaved := ClipboardAll
 
   if (!visualMode) {

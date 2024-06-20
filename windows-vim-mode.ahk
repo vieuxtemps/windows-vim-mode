@@ -1,7 +1,8 @@
 #SingleInstance Force
 #MaxHotkeysPerInterval 300
-
 SetKeyDelay, -1
+
+#Include options.ahk
 #Include src\functions.ahk
 
 global visualMode := false

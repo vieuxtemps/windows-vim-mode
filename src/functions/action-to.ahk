@@ -6,6 +6,9 @@ ActionRestoreClipboard() {
 }
 
 actionTo(char, command := false, restoreClipboard := true, includingLast := false, backwards := false) {
+    if (restoreClipboard and not Options["ENABLE_AUXILIARY_CLIPBOARD_COMMANDS"])
+        return
+
     KeyWait, Shift
 
     if (restoreClipboard)

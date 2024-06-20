@@ -51,7 +51,10 @@ Return
     if (visualMode) {
         Send, +^{End}
     } else {
-        Send, ^{End}
+        If Options["ENABLE_WINDOWS_EXPLORER_COMMANDS"] and (WinActive("ahk_exe explorer.exe") or WinActive("ahk_class #32770"))
+            Send, {End}
+        Else
+            Send, ^{End}
     }
 Return
 
@@ -74,7 +77,10 @@ Return
     if (visualMode) {
         Send, +^{Home}
     } else {
-        Send, ^{Home}
+        If Options["ENABLE_WINDOWS_EXPLORER_COMMANDS"] and (WinActive("ahk_exe explorer.exe") or WinActive("ahk_class #32770"))
+            Send, {Home}
+        Else
+            Send, ^{Home}
     }
 Return
 

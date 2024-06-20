@@ -8,7 +8,7 @@
 ; p: go backward in history
 ; P: go one level up
 ; n: go forward in history
-#If WinActive("ahk_exe explorer.exe") or WinActive("ahk_class #32770")
+#If Options["ENABLE_WINDOWS_EXPLORER_COMMANDS"] and (WinActive("ahk_exe explorer.exe") or WinActive("ahk_class #32770"))
   p::
     turnVisualModeOff()
     Send, !{Left}
@@ -25,7 +25,7 @@
 #If
 
 ; ALl other non-explorer applications (vim-like paste behavior)
-#If not (WinActive("ahk_exe explorer.exe") or WinActive("ahk_class #32770"))
+#If not Options["ENABLE_WINDOWS_EXPLORER_COMMANDS"] or not (WinActive("ahk_exe explorer.exe") or WinActive("ahk_class #32770"))
   p::
     if (visualMode) {
       Send, {BackSpace}
