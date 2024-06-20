@@ -9,4 +9,5 @@
 #Include %A_ScriptDir%\src\shortcuts\vim\numbers-first.ahk
 #Include %A_ScriptDir%\src\shortcuts\vim\indent.ahk
 #Include %A_ScriptDir%\src\shortcuts\vim\case.ahk
+#Include %A_ScriptDir%\src\shortcuts\vim\char-movement.ahk
 
