@@ -23,9 +23,11 @@ s::
 Return
 
 +s::
-    KeyWait, Shift, T1
+    Send, {Shift down}
     switchToInsertMode()
-    Send, {Home}{Right}{Left}+{End}^x
+    Send, {Home}{Right}{Left}
+    Sleep 10
+    Send, +{End}^x
 Return
 
 r::
