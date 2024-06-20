@@ -1,10 +1,10 @@
 x::
-    Send, {Delete}
-    turnVisualModeOff()
-Return
+    if (visualMode)
+        Send, ^x
+    else
+        Send, {Delete}
 
-$^x::
-    Send, ^{Delete}
+    turnVisualModeOff()
 Return
 
 +x::
