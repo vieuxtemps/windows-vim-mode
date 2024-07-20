@@ -12,9 +12,13 @@
     Return
 
     +y::
-        Send, {Home}
-        Sleep, 10
-        Send, +{End}+{Right}
+        if (not Options["NVIM_STYLE_YANK"]) {
+            Send, {Home}
+            Sleep, 10
+        }
+        Send, +{End}
+        if (not Options["NVIM_STYLE_YANK"])
+            Send, +{Right}
         Sleep, 10
         Send, ^c
         Sleep, 150
