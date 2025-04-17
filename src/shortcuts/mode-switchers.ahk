@@ -29,33 +29,33 @@ Esc::
         switchToInsertMode()
 Return
 
-i::
+$i::
     switchToInsertMode()
 Return
 
-+i::
+$+i::
     switchToInsertMode()
     KeyWait, Shift, T1
     Send, {Home}
 Return
 
-a::
+$a::
     switchToInsertMode()
     Send, {Right}
 Return
 
-+a::
+$+a::
     switchToInsertMode()
     ; KeyWait, Shift, T1
     Send, {End}
 Return
 
-v::
+$v::
     turnVisualModeOn()
 Return
 
-+v::
+$+v::
     turnVisualModeOn()
-    KeyWait, Shift, T1
+    ; KeyWait, Shift, T1
     Send, {Home}+{End}+{Right}
 Return
