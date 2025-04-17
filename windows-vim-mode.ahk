@@ -1,6 +1,6 @@
 #SingleInstance Force
 #MaxHotkeysPerInterval 300
-Process, Priority,, Normal
+Process, Priority,, High
 Menu, Tray, Tip, Windows Vim Mode
 SetKeyDelay, -1
 
